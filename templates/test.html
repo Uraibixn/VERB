@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+{% block content %}
+<nav class="t-nav">
+  <div class="t-logo">VERB</div>
+  <div class="t-nav-right">
+    <div class="t-progress">Question <span id="qnum">1</span> of {{ questions|length }}</div>
+    <div class="t-datetime" id="datetime"></div>
+  </div>
+</nav>
+
+<div class="t-body">
+  <div class="t-question" id="question"></div>
+  <div class="t-phase" id="phase">Get ready...</div>
+  <div class="t-timer" id="timer">15</div>
+  <div class="t-mic-wrap">
+    <div class="t-mic-btn" id="micBtn" onclick="stopRecording()">
+      <svg class="t-mic-icon" viewBox="0 0 24 24">
+        <path d="M12 1a4 4 0 0 1 4 4v6a4 4 0 0 1-8 0V5a4 4 0 0 1 4-4zm0 2a2 2 0 0 0-2 2v6a2 2 0 0 0 4 0V5a2 2 0 0 0-2-2zm7 8a1 1 0 0 1 1 1 8 8 0 0 1-7 7.93V22h2a1 1 0 0 1 0 2H9a1 1 0 0 1 0-2h2v-2.07A8 8 0 0 1 4 12a1 1 0 0 1 2 0 6 6 0 0 0 12 0 1 1 0 0 1 1-1z"/>
+      </svg>
+    </div>
+    <div class="t-mic-label" id="micLabel">Mic starts after timer</div>
+  </div>
+</div>
+
+<script>
+  const questions = {{ questions | tojson }};
+  let currentIndex = 0;
+  let seconds = 0;
+  let phase = 'prep';
+  let prepInterval = null;
+  let recordingInterval = null;
+  let mediaRecorder = null;
+  let audioChunks = [];
+
+  const questionEl = document.getElementById('question');
+  const timerEl = document.getElementById('timer');
+  const phaseEl = document.getElementById('phase');
+  const micBtn = document.getElementById('micBtn');
+  const micLabel = document.getElementById('micLabel');
+  const datetimeEl = document.getElementById('datetime');
+  const qnumEl = document.getElementById('qnum');
+
+  function loadQuestion() {
+    if (currentIndex >= questions.length) {
+      window.location.href = '/results';
+      return;
+    }
+
+    // reset UI
+    seconds = 15;
+    phase = 'prep';
+    timerEl.textContent = '15';
+    timerEl.classList.remove('warning');
+    phaseEl.textContent = 'Get ready...';
+    phaseEl.classList.remove('recording-phase');
+    micBtn.classList.remove('active');
+    micLabel.textContent = 'Mic starts after timer';
+    micLabel.classList.remove('active');
+    datetimeEl.classList.remove('visible');
+    qnumEl.textContent = currentIndex + 1;
+
+    // fade in question
+    questionEl.style.opacity = '0';
+    questionEl.textContent = questions[currentIndex].question;
+    setTimeout(() => {
+      questionEl.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      questionEl.style.opacity = '1';
+      questionEl.style.transform = 'translateY(0)';
+      setTimeout(startPrepTimer, 900);
+    }, 300);
+  }
+
+  function startPrepTimer() {
+    phase = 'prep';
+    phaseEl.textContent = 'Preparation time';
+    prepInterval = setInterval(() => {
+      seconds--;
+      timerEl.textContent = seconds;
+      if (seconds <= 5) timerEl.classList.add('warning');
+      if (seconds <= 0) {
+        clearInterval(prepInterval);
+        timerEl.classList.remove('warning');
+        startRecording();
+      }
+    }, 1000);
+  }
+
+  function startRecording() {
+    phase = 'recording';
+    seconds = 0;
+    timerEl.textContent = '00';
+    phaseEl.textContent = 'Recording';
+    phaseEl.classList.add('recording-phase');
+    micBtn.classList.add('active');
+    micLabel.textContent = 'Press to stop';
+    micLabel.classList.add('active');
+
+    // show datetime
+    const now = new Date();
+    datetimeEl.textContent = now.toLocaleDateString('en-GB', {
+      weekday: 'short', day: 'numeric', month: 'short', year: 'numeric'
+    }) + ' · ' + now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+    datetimeEl.classList.add('visible');
+
+    // count up
+    recordingInterval = setInterval(() => {
+      seconds++;
+      timerEl.textContent = String(seconds).padStart(2, '0');
+    }, 1000);
+
+    // start microphone
+    navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+      audioChunks = [];
+      mediaRecorder = new MediaRecorder(stream);
+      mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+      mediaRecorder.onstop = () => {
+        const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+        sendAudio(audioBlob);
+        stream.getTracks().forEach(t => t.stop());
+      };
+      mediaRecorder.start();
+    }).catch(() => {
+      phaseEl.textContent = 'Microphone access denied';
+    });
+  }
+
+  function stopRecording() {
+    if (phase !== 'recording') return;
+    clearInterval(recordingInterval);
+    phase = 'done';
+    micBtn.classList.remove('active');
+    micLabel.textContent = 'Answer saved';
+    micLabel.classList.remove('active');
+    phaseEl.textContent = 'Answer saved!';
+    phaseEl.classList.remove('recording-phase');
+
+    if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+      mediaRecorder.stop();
+    }
+
+    setTimeout(() => {
+      phaseEl.textContent = 'Next question loading...';
+      questionEl.style.transition = 'opacity 0.4s ease';
+      questionEl.style.opacity = '0';
+      setTimeout(() => {
+        currentIndex++;
+        loadQuestion();
+      }, 500);
+    }, 1200);
+  }
+
+  function sendAudio(blob) {
+    const formData = new FormData();
+    formData.append('audio', blob, `q${currentIndex}.webm`);
+    formData.append('question_index', currentIndex);
+    formData.append('question', questions[currentIndex].question);
+    fetch('/save_audio', { method: 'POST', body: formData });
+  }
+
+  // start
+  loadQuestion();
+</script>
+{% endblock %}

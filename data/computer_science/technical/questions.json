@@ -1,0 +1,235 @@
+[
+    {
+        "question": "What is a Python dictionary and how is it used?",
+        "category": "technical",
+        "companies": [
+            "Amazon",
+            "Microsoft"
+        ],
+        "frequency": "High",
+        "difficulty": "easy",
+        "source": "Technical interview prep platforms",
+        "keywords": [
+            "dictionary",
+            "dict",
+            "key",
+            "value",
+            "Python"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "Explain object-oriented programming concepts.",
+        "category": "technical",
+        "companies": [
+            "Google",
+            "Microsoft"
+        ],
+        "frequency": "High",
+        "difficulty": "medium",
+        "source": "Interview prep platforms",
+        "keywords": [
+            "OOP",
+            "object",
+            "class",
+            "inheritance",
+            "polymorphism"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    },
+    {
+        "question": "What is the difference between a list and a tuple?",
+        "category": "technical",
+        "companies": [
+            "Amazon"
+        ],
+        "frequency": "High",
+        "difficulty": "easy",
+        "source": "Interview prep platforms",
+        "keywords": [
+            "list",
+            "tuple",
+            "mutable",
+            "immutable",
+            "Python"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "What is a stack and how does it work?",
+        "category": "technical",
+        "companies": [
+            "Google",
+            "Meta"
+        ],
+        "frequency": "High",
+        "difficulty": "easy",
+        "source": "Data structure interviews",
+        "keywords": [
+            "stack",
+            "LIFO",
+            "push",
+            "pop",
+            "data structure"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "What is a queue and where is it used?",
+        "category": "technical",
+        "companies": [
+            "Amazon",
+            "Microsoft"
+        ],
+        "frequency": "High",
+        "difficulty": "easy",
+        "source": "Data structure interviews",
+        "keywords": [
+            "queue",
+            "FIFO",
+            "enqueue",
+            "dequeue",
+            "data structure"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "Explain what a hash table is.",
+        "category": "technical",
+        "companies": [
+            "Google",
+            "Meta"
+        ],
+        "frequency": "Very High",
+        "difficulty": "medium",
+        "source": "Interview reports",
+        "keywords": [
+            "hash table",
+            "hash function",
+            "collision",
+            "dictionary",
+            "lookup"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    },
+    {
+        "question": "What is recursion?",
+        "category": "technical",
+        "companies": [
+            "Google",
+            "Amazon"
+        ],
+        "frequency": "Very High",
+        "difficulty": "easy",
+        "source": "Interview prep platforms",
+        "keywords": [
+            "recursion",
+            "base case",
+            "recursive call",
+            "function"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "What is the difference between compiled and interpreted languages?",
+        "category": "technical",
+        "companies": [
+            "Microsoft"
+        ],
+        "frequency": "Medium",
+        "difficulty": "medium",
+        "source": "CS fundamentals interviews",
+        "keywords": [
+            "compiled",
+            "interpreted",
+            "language",
+            "runtime",
+            "performance"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    },
+    {
+        "question": "Explain memory management in programming.",
+        "category": "technical",
+        "companies": [
+            "Google"
+        ],
+        "frequency": "Medium",
+        "difficulty": "medium",
+        "source": "Systems interviews",
+        "keywords": [
+            "memory management",
+            "heap",
+            "stack",
+            "garbage collection"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    },
+    {
+        "question": "What is a linked list?",
+        "category": "technical",
+        "companies": [
+            "Amazon",
+            "Meta"
+        ],
+        "frequency": "Very High",
+        "difficulty": "easy",
+        "source": "Data structure interviews",
+        "keywords": [
+            "linked list",
+            "node",
+            "next pointer",
+            "data structure"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "What is a binary tree?",
+        "category": "technical",
+        "companies": [
+            "Google",
+            "Microsoft"
+        ],
+        "frequency": "Very High",
+        "difficulty": "medium",
+        "source": "Interview prep platforms",
+        "keywords": [
+            "binary tree",
+            "node",
+            "left child",
+            "right child",
+            "tree"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    },
+    {
+        "question": "What is normalization in databases?",
+        "category": "technical",
+        "companies": [
+            "Amazon"
+        ],
+        "frequency": "Medium",
+        "difficulty": "medium",
+        "source": "Database interviews",
+        "keywords": [
+            "normalization",
+            "database",
+            "1NF",
+            "2NF",
+            "3NF"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    }
+]

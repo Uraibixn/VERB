@@ -1,0 +1,823 @@
+[
+    {
+        "question": "What is the difference between symmetric and asymmetric encryption?",
+        "category": "technical",
+        "companies": [
+            "Amazon",
+            "Microsoft",
+            "Google"
+        ],
+        "frequency": "High",
+        "difficulty": "medium",
+        "source": "Cybersecurity interview guides",
+        "keywords": [
+            "symmetric",
+            "asymmetric",
+            "encryption",
+            "keys",
+            "security"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "Explain what a firewall does and the types of firewalls.",
+        "category": "technical",
+        "companies": [
+            "Meta",
+            "Microsoft"
+        ],
+        "frequency": "High",
+        "difficulty": "medium",
+        "source": "Network security interviews",
+        "keywords": [
+            "firewall",
+            "network",
+            "packet filtering",
+            "security",
+            "types"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "What is a SQL injection and how can it be prevented?",
+        "category": "technical",
+        "companies": [
+            "Amazon",
+            "Google"
+        ],
+        "frequency": "Very High",
+        "difficulty": "medium",
+        "source": "Web security interviews",
+        "keywords": [
+            "SQL injection",
+            "database",
+            "input validation",
+            "sanitization",
+            "security"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "Explain cross-site scripting (XSS) and how to mitigate it.",
+        "category": "technical",
+        "companies": [
+            "Google",
+            "Microsoft"
+        ],
+        "frequency": "High",
+        "difficulty": "medium",
+        "source": "Web security interviews",
+        "keywords": [
+            "XSS",
+            "cross-site scripting",
+            "scripts",
+            "input sanitization",
+            "mitigation"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "What is multi-factor authentication and why is it important?",
+        "category": "technical",
+        "companies": [
+            "Amazon",
+            "Meta"
+        ],
+        "frequency": "High",
+        "difficulty": "easy",
+        "source": "Identity management interviews",
+        "keywords": [
+            "MFA",
+            "authentication",
+            "security",
+            "verification",
+            "login"
+        ],
+        "ideal_min": 25,
+        "ideal_max": 35
+    },
+    {
+        "question": "Describe the CIA triad in cybersecurity.",
+        "category": "technical",
+        "companies": [
+            "Google",
+            "Microsoft"
+        ],
+        "frequency": "High",
+        "difficulty": "easy",
+        "source": "Fundamentals interviews",
+        "keywords": [
+            "CIA triad",
+            "confidentiality",
+            "integrity",
+            "availability",
+            "security"
+        ],
+        "ideal_min": 25,
+        "ideal_max": 35
+    },
+    {
+        "question": "What is a man-in-the-middle (MITM) attack?",
+        "category": "technical",
+        "companies": [
+            "Amazon",
+            "Meta"
+        ],
+        "frequency": "High",
+        "difficulty": "medium",
+        "source": "Network security interviews",
+        "keywords": [
+            "MITM",
+            "attack",
+            "interception",
+            "communication",
+            "security"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "Explain the difference between a virus, worm, and trojan.",
+        "category": "technical",
+        "companies": [
+            "Google",
+            "Microsoft"
+        ],
+        "frequency": "High",
+        "difficulty": "easy",
+        "source": "Malware interviews",
+        "keywords": [
+            "virus",
+            "worm",
+            "trojan",
+            "malware",
+            "infection"
+        ],
+        "ideal_min": 25,
+        "ideal_max": 35
+    },
+    {
+        "question": "What are zero-day vulnerabilities?",
+        "category": "technical",
+        "companies": [
+            "Amazon",
+            "Meta"
+        ],
+        "frequency": "Medium",
+        "difficulty": "medium",
+        "source": "Security research interviews",
+        "keywords": [
+            "zero-day",
+            "vulnerability",
+            "exploit",
+            "security",
+            "patch"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "What is penetration testing and why is it performed?",
+        "category": "technical",
+        "companies": [
+            "Google",
+            "Microsoft"
+        ],
+        "frequency": "High",
+        "difficulty": "medium",
+        "source": "Security operations interviews",
+        "keywords": [
+            "penetration testing",
+            "ethical hacking",
+            "vulnerability",
+            "assessment",
+            "security"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "Describe phishing and how organizations can prevent it.",
+        "category": "technical",
+        "companies": [
+            "Amazon",
+            "Meta"
+        ],
+        "frequency": "Very High",
+        "difficulty": "easy",
+        "source": "Security awareness interviews",
+        "keywords": [
+            "phishing",
+            "email",
+            "scam",
+            "awareness",
+            "prevention"
+        ],
+        "ideal_min": 25,
+        "ideal_max": 35
+    },
+    {
+        "question": "Explain the difference between IDS and IPS.",
+        "category": "technical",
+        "companies": [
+            "Google",
+            "Microsoft"
+        ],
+        "frequency": "Medium",
+        "difficulty": "medium",
+        "source": "Network security interviews",
+        "keywords": [
+            "IDS",
+            "IPS",
+            "detection",
+            "prevention",
+            "network security"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "What is public key infrastructure (PKI)?",
+        "category": "technical",
+        "companies": [
+            "Amazon",
+            "Google"
+        ],
+        "frequency": "Medium",
+        "difficulty": "medium",
+        "source": "Encryption interviews",
+        "keywords": [
+            "PKI",
+            "public key",
+            "private key",
+            "certificates",
+            "encryption"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "Describe how a VPN works and why it's used.",
+        "category": "technical",
+        "companies": [
+            "Microsoft",
+            "Meta"
+        ],
+        "frequency": "High",
+        "difficulty": "easy",
+        "source": "Network security interviews",
+        "keywords": [
+            "VPN",
+            "encryption",
+            "tunnel",
+            "privacy",
+            "network"
+        ],
+        "ideal_min": 25,
+        "ideal_max": 35
+    },
+    {
+        "question": "What is the difference between black-box and white-box testing?",
+        "category": "technical",
+        "companies": [
+            "Amazon",
+            "Google"
+        ],
+        "frequency": "Medium",
+        "difficulty": "medium",
+        "source": "Penetration testing interviews",
+        "keywords": [
+            "black-box",
+            "white-box",
+            "testing",
+            "methodology",
+            "security"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "Explain the principle of least privilege.",
+        "category": "technical",
+        "companies": [
+            "Microsoft",
+            "Meta"
+        ],
+        "frequency": "High",
+        "difficulty": "easy",
+        "source": "Security best practices",
+        "keywords": [
+            "least privilege",
+            "permissions",
+            "access control",
+            "security",
+            "roles"
+        ],
+        "ideal_min": 25,
+        "ideal_max": 35
+    },
+    {
+        "question": "What is social engineering and how can it be mitigated?",
+        "category": "technical",
+        "companies": [
+            "Amazon",
+            "Google"
+        ],
+        "frequency": "Very High",
+        "difficulty": "medium",
+        "source": "Security awareness interviews",
+        "keywords": [
+            "social engineering",
+            "manipulation",
+            "phishing",
+            "prevention",
+            "awareness"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "Describe the concept of network segmentation.",
+        "category": "technical",
+        "companies": [
+            "Microsoft",
+            "Meta"
+        ],
+        "frequency": "Medium",
+        "difficulty": "medium",
+        "source": "Network security interviews",
+        "keywords": [
+            "network segmentation",
+            "subnet",
+            "security",
+            "access control",
+            "isolation"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "What are common methods for securing cloud environments?",
+        "category": "technical",
+        "companies": [
+            "Amazon",
+            "Google"
+        ],
+        "frequency": "High",
+        "difficulty": "medium",
+        "source": "Cloud security interviews",
+        "keywords": [
+            "cloud security",
+            "best practices",
+            "IAM",
+            "encryption",
+            "monitoring"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "Explain what ransomware is and how to prevent it.",
+        "category": "technical",
+        "companies": [
+            "Microsoft",
+            "Meta"
+        ],
+        "frequency": "High",
+        "difficulty": "medium",
+        "source": "Incident response interviews",
+        "keywords": [
+            "ransomware",
+            "malware",
+            "prevention",
+            "backup",
+            "security"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "Describe how HTTPS ensures secure communication.",
+        "category": "technical",
+        "companies": [
+            "Amazon",
+            "Google"
+        ],
+        "frequency": "Very High",
+        "difficulty": "easy",
+        "source": "Web security interviews",
+        "keywords": [
+            "HTTPS",
+            "TLS",
+            "encryption",
+            "secure communication",
+            "certificates"
+        ],
+        "ideal_min": 25,
+        "ideal_max": 35
+    },
+    {
+        "question": "What is a security information and event management (SIEM) system?",
+        "category": "technical",
+        "companies": [
+            "Microsoft",
+            "Meta"
+        ],
+        "frequency": "Medium",
+        "difficulty": "medium",
+        "source": "Security operations interviews",
+        "keywords": [
+            "SIEM",
+            "monitoring",
+            "logs",
+            "threat detection",
+            "alerts"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "What is two-factor authentication (2FA)?",
+        "category": "technical",
+        "companies": [
+            "Amazon",
+            "Google"
+        ],
+        "frequency": "Very High",
+        "difficulty": "easy",
+        "source": "Identity management interviews",
+        "keywords": [
+            "2FA",
+            "authentication",
+            "security",
+            "login",
+            "verification"
+        ],
+        "ideal_min": 25,
+        "ideal_max": 35
+    },
+    {
+        "question": "Explain the difference between hashing and encryption.",
+        "category": "technical",
+        "companies": [
+            "Microsoft",
+            "Meta"
+        ],
+        "frequency": "High",
+        "difficulty": "medium",
+        "source": "Encryption interviews",
+        "keywords": [
+            "hashing",
+            "encryption",
+            "security",
+            "data integrity",
+            "passwords"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "What are some best practices for password management?",
+        "category": "technical",
+        "companies": [
+            "Amazon",
+            "Google"
+        ],
+        "frequency": "Very High",
+        "difficulty": "easy",
+        "source": "Security awareness interviews",
+        "keywords": [
+            "password",
+            "management",
+            "complexity",
+            "security",
+            "storage"
+        ],
+        "ideal_min": 25,
+        "ideal_max": 35
+    },
+    {
+        "question": "Describe common methods for mitigating DDoS attacks.",
+        "category": "technical",
+        "companies": [
+            "Microsoft",
+            "Meta"
+        ],
+        "frequency": "Medium",
+        "difficulty": "medium",
+        "source": "Network security interviews",
+        "keywords": [
+            "DDoS",
+            "mitigation",
+            "traffic",
+            "network",
+            "security"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "Explain how TLS handshake works step by step.",
+        "category": "technical",
+        "companies": [
+            "Google",
+            "Amazon"
+        ],
+        "frequency": "High",
+        "difficulty": "hard",
+        "source": "Network security and backend interviews",
+        "keywords": [
+            "TLS",
+            "handshake",
+            "encryption",
+            "keys",
+            "secure communication"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    },
+    {
+        "question": "How would you secure a REST API in a production environment?",
+        "category": "technical",
+        "companies": [
+            "Microsoft",
+            "Google"
+        ],
+        "frequency": "Very High",
+        "difficulty": "hard",
+        "source": "Backend and cloud security interviews",
+        "keywords": [
+            "REST API",
+            "security",
+            "authentication",
+            "authorization",
+            "best practices"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    },
+    {
+        "question": "What is privilege escalation and how can it be prevented?",
+        "category": "technical",
+        "companies": [
+            "Amazon",
+            "Meta"
+        ],
+        "frequency": "High",
+        "difficulty": "hard",
+        "source": "System security interviews",
+        "keywords": [
+            "privilege escalation",
+            "security",
+            "permissions",
+            "prevention",
+            "vulnerability"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    },
+    {
+        "question": "Explain how OAuth 2.0 works and its security implications.",
+        "category": "technical",
+        "companies": [
+            "Google",
+            "Microsoft"
+        ],
+        "frequency": "High",
+        "difficulty": "hard",
+        "source": "Authentication system interviews",
+        "keywords": [
+            "OAuth 2.0",
+            "authentication",
+            "authorization",
+            "token",
+            "security"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    },
+    {
+        "question": "How would you detect and respond to a data breach?",
+        "category": "technical",
+        "companies": [
+            "Amazon",
+            "Meta"
+        ],
+        "frequency": "High",
+        "difficulty": "hard",
+        "source": "Incident response interviews",
+        "keywords": [
+            "data breach",
+            "detection",
+            "response",
+            "incident",
+            "security"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    },
+    {
+        "question": "What are common vulnerabilities in cloud environments and how do you mitigate them?",
+        "category": "technical",
+        "companies": [
+            "Amazon",
+            "Google"
+        ],
+        "frequency": "Very High",
+        "difficulty": "hard",
+        "source": "Cloud security interviews",
+        "keywords": [
+            "cloud security",
+            "vulnerabilities",
+            "mitigation",
+            "IAM",
+            "best practices"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    },
+    {
+        "question": "Explain how DNS spoofing works and how it can be prevented.",
+        "category": "technical",
+        "companies": [
+            "Microsoft",
+            "Google"
+        ],
+        "frequency": "Medium",
+        "difficulty": "hard",
+        "source": "Network security interviews",
+        "keywords": [
+            "DNS spoofing",
+            "attack",
+            "mitigation",
+            "security",
+            "network"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    },
+    {
+        "question": "What is a race condition and how can it lead to security vulnerabilities?",
+        "category": "technical",
+        "companies": [
+            "Google",
+            "Amazon"
+        ],
+        "frequency": "Medium",
+        "difficulty": "hard",
+        "source": "Secure coding interviews",
+        "keywords": [
+            "race condition",
+            "concurrency",
+            "vulnerability",
+            "security",
+            "coding"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    },
+    {
+        "question": "How do you securely store passwords in a database?",
+        "category": "technical",
+        "companies": [
+            "Meta",
+            "Google"
+        ],
+        "frequency": "Very High",
+        "difficulty": "medium",
+        "source": "Backend security interviews",
+        "keywords": [
+            "password storage",
+            "hashing",
+            "encryption",
+            "security",
+            "database"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "Explain how a buffer overflow attack works.",
+        "category": "technical",
+        "companies": [
+            "Amazon",
+            "Microsoft"
+        ],
+        "frequency": "High",
+        "difficulty": "hard",
+        "source": "Systems security interviews",
+        "keywords": [
+            "buffer overflow",
+            "memory",
+            "exploit",
+            "security",
+            "coding"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    },
+    {
+        "question": "What is the difference between authentication and authorization in depth?",
+        "category": "technical",
+        "companies": [
+            "Google",
+            "Microsoft"
+        ],
+        "frequency": "Very High",
+        "difficulty": "medium",
+        "source": "Identity and access management interviews",
+        "keywords": [
+            "authentication",
+            "authorization",
+            "access control",
+            "security",
+            "identity"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "How would you design a secure login system?",
+        "category": "technical",
+        "companies": [
+            "Amazon",
+            "Meta"
+        ],
+        "frequency": "Very High",
+        "difficulty": "hard",
+        "source": "System design interviews",
+        "keywords": [
+            "login system",
+            "security",
+            "authentication",
+            "authorization",
+            "best practices"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    },
+    {
+        "question": "Explain how certificate authorities (CAs) work and why they are trusted.",
+        "category": "technical",
+        "companies": [
+            "Google",
+            "Microsoft"
+        ],
+        "frequency": "Medium",
+        "difficulty": "hard",
+        "source": "PKI and web security interviews",
+        "keywords": [
+            "certificate authority",
+            "CA",
+            "trust",
+            "PKI",
+            "encryption"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    },
+    {
+        "question": "What are side-channel attacks and give an example.",
+        "category": "technical",
+        "companies": [
+            "Google"
+        ],
+        "frequency": "Medium",
+        "difficulty": "hard",
+        "source": "Advanced security interviews",
+        "keywords": [
+            "side-channel attack",
+            "leak",
+            "timing",
+            "security",
+            "example"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    },
+    {
+        "question": "How would you secure a distributed system against attacks?",
+        "category": "technical",
+        "companies": [
+            "Amazon",
+            "Google",
+            "Meta"
+        ],
+        "frequency": "High",
+        "difficulty": "hard",
+        "source": "System design + security interviews",
+        "keywords": [
+            "distributed system",
+            "security",
+            "attacks",
+            "design",
+            "mitigation"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    }
+]

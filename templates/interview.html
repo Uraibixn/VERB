@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block content %}
+<nav class="i-nav">
+  <div class="i-logo">VERB</div>
+</nav>
+
+<div id="step1" class="step active fade-in">
+  <div class="step-date">{{ date }}</div>
+  <div class="step-title">Hello, <span>{{ username }}.</span></div>
+  <div class="step-sub">What do you want to practice today?</div>
+  <div class="options">
+    <div class="opt" onclick="selectTopic(this, 'cs', 'step2')">Computer Science</div>
+    <div class="opt" onclick="selectTopic(this, 'cyber', 'step2')">Cyber Security</div>
+  </div>
+</div>
+
+<div id="step2" class="step">
+  <div class="step-title">Length of the test</div>
+  <div class="step-sub">How many questions?</div>
+  <div class="options">
+    <div class="opt" onclick="selectLength(this, 5, 'step3')">5</div>
+    <div class="opt" onclick="selectLength(this, 10, 'step3')">10</div>
+    <div class="opt" onclick="selectLength(this, 15, 'step3')">15</div>
+  </div>
+</div>
+
+<div id="step3" class="step">
+  <div class="ready-title">READY?</div>
+
+  <button type="button" class="yes-btn" onclick="startTest()">YES</button>
+
+</div>
+
+<script>
+  let selectedTopic = "";
+  let selectedLength = "";
+
+  function startTest() {
+    if (!selectedTopic || !selectedLength) {
+      alert('Please select a topic and length first.');
+      return;
+    }
+
+    fetch('/set_session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ topic: selectedTopic, length: selectedLength })
+    })
+    .then(response => {
+      if (!response.ok) throw new Error('Failed to set session');
+      window.location.href = '/test';
+    })
+    .catch(err => {
+      console.error(err);
+      alert('Error starting test. Please try again.');
+    });
+  }
+
+  function selectTopic(el, topic, nextId) {
+    selectedTopic = topic;
+    pickAndGo(el, nextId);
+  }
+
+  function selectLength(el, length, nextId) {
+    selectedLength = length;
+    pickAndGo(el, nextId);
+  }
+
+  function pickAndGo(el, nextId) {
+    el.classList.add('selected');
+    const current = document.querySelector('.step.active');
+    current.classList.add('fade-out');
+    setTimeout(() => {
+      current.classList.remove('active', 'fade-out');
+      const next = document.getElementById(nextId);
+      next.classList.add('active', 'fade-in');
+      setTimeout(() => next.classList.remove('fade-in'), 600);
+    }, 400);
+  }
+</script>
+{% endblock %}

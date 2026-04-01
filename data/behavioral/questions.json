@@ -1,0 +1,214 @@
+[
+    {
+        "question": "Tell me about yourself.",
+        "category": "behavioral",
+        "companies": [
+            "Google",
+            "Amazon",
+            "Meta",
+            "Microsoft"
+        ],
+        "frequency": "Very High",
+        "difficulty": "easy",
+        "source": "Glassdoor interview reports",
+        "keywords": [
+            "background",
+            "experience",
+            "skills",
+            "career",
+            "introduction"
+        ],
+        "ideal_min": 40,
+        "ideal_max": 55
+    },
+    {
+        "question": "Why do you want to work at this company?",
+        "category": "behavioral",
+        "companies": [
+            "Google",
+            "Amazon",
+            "Meta",
+            "Microsoft"
+        ],
+        "frequency": "Very High",
+        "difficulty": "easy",
+        "source": "Glassdoor interview reports",
+        "keywords": [
+            "motivation",
+            "company",
+            "values",
+            "culture",
+            "fit"
+        ],
+        "ideal_min": 40,
+        "ideal_max": 55
+    },
+    {
+        "question": "Tell me about a time you faced a difficult problem and how you solved it.",
+        "category": "behavioral",
+        "companies": [
+            "Amazon",
+            "Microsoft",
+            "Meta"
+        ],
+        "frequency": "Very High",
+        "difficulty": "medium",
+        "source": "Amazon leadership principle interviews",
+        "keywords": [
+            "problem solving",
+            "challenge",
+            "solution",
+            "approach",
+            "result"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    },
+    {
+        "question": "Describe a situation where you worked in a team.",
+        "category": "behavioral",
+        "companies": [
+            "Google",
+            "Meta",
+            "Microsoft"
+        ],
+        "frequency": "High",
+        "difficulty": "easy",
+        "source": "Glassdoor interview reports",
+        "keywords": [
+            "teamwork",
+            "collaboration",
+            "communication",
+            "role",
+            "project"
+        ],
+        "ideal_min": 45,
+        "ideal_max": 65
+    },
+    {
+        "question": "Tell me about a failure and what you learned from it.",
+        "category": "behavioral",
+        "companies": [
+            "Google",
+            "Amazon",
+            "Meta"
+        ],
+        "frequency": "Very High",
+        "difficulty": "medium",
+        "source": "Interview experience reports",
+        "keywords": [
+            "failure",
+            "mistake",
+            "lesson",
+            "growth",
+            "learning"
+        ],
+        "ideal_min": 55,
+        "ideal_max": 75
+    },
+    {
+        "question": "What are your strengths and weaknesses?",
+        "category": "behavioral",
+        "companies": [
+            "Google",
+            "Amazon",
+            "Microsoft"
+        ],
+        "frequency": "Very High",
+        "difficulty": "easy",
+        "source": "Common HR interview question",
+        "keywords": [
+            "strengths",
+            "weaknesses",
+            "skills",
+            "improvement",
+            "self-awareness"
+        ],
+        "ideal_min": 45,
+        "ideal_max": 65
+    },
+    {
+        "question": "Describe a time you had to meet a tight deadline.",
+        "category": "behavioral",
+        "companies": [
+            "Amazon",
+            "Microsoft"
+        ],
+        "frequency": "High",
+        "difficulty": "medium",
+        "source": "Amazon leadership principle interviews",
+        "keywords": [
+            "deadline",
+            "time management",
+            "pressure",
+            "planning",
+            "execution"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    },
+    {
+        "question": "Explain a situation where you showed leadership.",
+        "category": "behavioral",
+        "companies": [
+            "Google",
+            "Amazon",
+            "Meta",
+            "Microsoft"
+        ],
+        "frequency": "High",
+        "difficulty": "medium",
+        "source": "Leadership evaluation interviews",
+        "keywords": [
+            "leadership",
+            "initiative",
+            "decision making",
+            "team guidance",
+            "responsibility"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    },
+    {
+        "question": "Tell me about a time you had a conflict with a teammate and how you handled it.",
+        "category": "behavioral",
+        "companies": [
+            "Amazon",
+            "Meta",
+            "Microsoft"
+        ],
+        "frequency": "Very High",
+        "difficulty": "medium",
+        "source": "Behavioral interview reports",
+        "keywords": [
+            "conflict resolution",
+            "team",
+            "communication",
+            "problem solving",
+            "compromise"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    },
+    {
+        "question": "Describe a time you took initiative without being told.",
+        "category": "behavioral",
+        "companies": [
+            "Google",
+            "Amazon",
+            "Meta"
+        ],
+        "frequency": "High",
+        "difficulty": "medium",
+        "source": "Interview experience reports",
+        "keywords": [
+            "initiative",
+            "proactive",
+            "action",
+            "ownership",
+            "responsibility"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    }
+]

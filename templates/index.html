@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<nav class="i-nav">
+  <div class="i-logo">VERB</div>
+  <a href="/profile"><div class="i-profile-icon">U</div></a>
+</nav>
+
+<div class="i-body">
+  <div class="i-greeting">Welcome Back, {{ username }}.</div>
+  <a href="/interview"><button class="i-start-btn">Start Interview Test</button></a>
+</div>
+{% endblock %}
+

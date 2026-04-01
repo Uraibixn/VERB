@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block content %}
+<nav class="r-nav">
+  <div class="r-logo">VERB</div>
+  <div class="r-nav-right">
+    <div class="r-test-info">{{ topic }} · {{ total_questions }} Questions</div>
+    <div class="r-test-date">{{ date }}</div>
+  </div>
+</nav>
+<div class="r-header">
+  <div class="r-title">Results</div>
+</div>
+<div class="r-body">
+  <div class="r-rings-row" id="row1"></div>
+  <div class="r-rings-row2" id="row2"></div>
+  <hr class="r-divider">
+  <div class="r-overall-box">
+    <div class="r-overall-label">Overall Score</div>
+    <div class="r-overall-score" id="overallScore">0</div>
+    <div class="r-overall-sub">Based on 4 metrics across {{ total_questions }} questions</div>
+    <a href="/index"><button class="r-btn">Back to Home</button></a>
+  </div>
+</div>
+
+<script>
+  const metrics = {{ metrics | tojson }};
+  const overallTarget = {{ overall_score }};
+  const R = 52;
+  const C = +(2 * Math.PI * R).toFixed(2);
+
+  const row1 = document.getElementById('row1');
+  const row2 = document.getElementById('row2');
+
+  metrics.forEach((m, i) => {
+    const container = document.createElement('div');
+    container.className = 'r-ring-wrap';
+
+    const ringContainer = document.createElement('div');
+    ringContainer.className = 'ring-container';
+    ringContainer.innerHTML = `
+      <svg class="ring-svg" viewBox="0 0 130 130">
+        <circle class="ring-bg" cx="65" cy="65" r="${R}" />
+        <circle class="ring-fill" cx="65" cy="65" r="${R}"
+          stroke="${m.color}"
+          stroke-dasharray="${C}"
+          stroke-dashoffset="${C}"
+          id="ring${i}" />
+      </svg>
+      <div class="ring-inner">
+        <div class="ring-pct" style="color:${m.color}">${m.pct}%</div>
+      </div>
+      <div class="r-tooltip">
+        <div class="r-tooltip-score">${m.score}</div>
+        <div class="r-tooltip-row"><span>Worst:</span> ${m.worst}</div>
+        <div class="r-tooltip-row">${m.detail}</div>
+      </div>`;
+
+    container.appendChild(ringContainer);
+    const label = document.createElement('div');
+    label.className = 'r-ring-label';
+    label.textContent = m.label;
+    container.appendChild(label);
+
+    (m.row === 1 ? row1 : row2).appendChild(container);
+  });
+
+  setTimeout(() => {
+    metrics.forEach((m, i) => {
+      const el = document.getElementById(`ring${i}`);
+      const offset = +(C - (m.pct / 100) * C).toFixed(2);
+      el.style.strokeDashoffset = offset;
+    });
+
+    let count = 0;
+    const iv = setInterval(() => {
+      count++;
+      document.getElementById('overallScore').textContent = `${count} / 100`;
+      if (count >= overallTarget) clearInterval(iv);
+    }, 15);
+  }, 400);
+</script>
+{% endblock %}

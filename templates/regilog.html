@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="verb-page">
+  <div class="verb-bg-accent"></div>
+  <div class="verb-bg-accent2"></div>
+
+  <div class="verb-logo">VERB</div>
+  <div class="verb-tagline">Do something.</div>
+
+  {% if error %}
+  <div class="verb-error">{{ error }}</div>
+  {% endif %}
+
+  <div class="verb-card">
+    <div class="verb-tabs">
+      <button class="verb-tab active" onclick="switchTab('login', this)">Login</button>
+      <button class="verb-tab" onclick="switchTab('register', this)">Register</button>
+    </div>
+
+    <div class="verb-form-wrap">
+      <div id="panel-login" class="verb-panel active">
+        <form method="POST" action="/login">
+          <div class="verb-field">
+            <label>Username</label>
+            <input type="text" name="username" placeholder="your_username" required>
+          </div>
+          <div class="verb-field">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="••••••••" required>
+          </div>
+          <button class="verb-btn" type="submit">Login</button>
+        </form>
+        <p class="verb-footer-note">No account? <span onclick="switchTabByName('register')">Register here</span></p>
+      </div>
+
+      <div id="panel-register" class="verb-panel">
+        <form method="POST" action="/register">
+          <div class="verb-field">
+            <label>Username</label>
+            <input type="text" name="username" placeholder="choose_a_username" required>
+          </div>
+          <div class="verb-field">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="you@example.com" required>
+          </div>
+          <div class="verb-field">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="••••••••" required>
+          </div>
+          <button class="verb-btn" type="submit">Create Account</button>
+        </form>
+        <p class="verb-footer-note">Already registered? <span onclick="switchTabByName('login')">Login</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function switchTab(name, btn) {
+    document.querySelectorAll('.verb-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.verb-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + name).classList.add('active');
+  }
+
+  function switchTabByName(name) {
+    document.querySelectorAll('.verb-tab').forEach(t => {
+      if (t.textContent.toLowerCase().trim() === name) switchTab(name, t);
+    });
+  }
+</script>
+{% endblock %}

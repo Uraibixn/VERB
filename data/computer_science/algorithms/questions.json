@@ -1,0 +1,243 @@
+[
+    {
+        "question": "What is the time complexity of binary search?",
+        "category": "algorithm",
+        "companies": [
+            "Google",
+            "Amazon"
+        ],
+        "frequency": "Very High",
+        "difficulty": "easy",
+        "source": "Algorithm interviews",
+        "keywords": [
+            "binary search",
+            "time complexity",
+            "O(log n)",
+            "algorithm"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "Explain how quicksort works.",
+        "category": "algorithm",
+        "companies": [
+            "Google"
+        ],
+        "frequency": "High",
+        "difficulty": "medium",
+        "source": "Interview prep platforms",
+        "keywords": [
+            "quicksort",
+            "partition",
+            "pivot",
+            "recursion",
+            "sorting"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    },
+    {
+        "question": "What is Big O notation?",
+        "category": "algorithm",
+        "companies": [
+            "Amazon",
+            "Microsoft"
+        ],
+        "frequency": "Very High",
+        "difficulty": "easy",
+        "source": "Algorithm fundamentals",
+        "keywords": [
+            "big O",
+            "time complexity",
+            "space complexity",
+            "notation"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "How would you find the largest number in a list?",
+        "category": "algorithm",
+        "companies": [
+            "Amazon"
+        ],
+        "frequency": "High",
+        "difficulty": "easy",
+        "source": "Coding interviews",
+        "keywords": [
+            "largest number",
+            "list",
+            "max",
+            "iteration"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "Explain merge sort.",
+        "category": "algorithm",
+        "companies": [
+            "Google"
+        ],
+        "frequency": "High",
+        "difficulty": "medium",
+        "source": "Sorting algorithms",
+        "keywords": [
+            "merge sort",
+            "divide and conquer",
+            "recursion",
+            "sorting"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    },
+    {
+        "question": "What is dynamic programming?",
+        "category": "algorithm",
+        "companies": [
+            "Google",
+            "Meta"
+        ],
+        "frequency": "High",
+        "difficulty": "hard",
+        "source": "Advanced algorithm interviews",
+        "keywords": [
+            "dynamic programming",
+            "memoization",
+            "optimization",
+            "subproblems"
+        ],
+        "ideal_min": 60,
+        "ideal_max": 90
+    },
+    {
+        "question": "Explain depth-first search (DFS).",
+        "category": "algorithm",
+        "companies": [
+            "Amazon"
+        ],
+        "frequency": "High",
+        "difficulty": "medium",
+        "source": "Graph algorithms",
+        "keywords": [
+            "DFS",
+            "depth-first search",
+            "graph traversal",
+            "stack",
+            "recursion"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    },
+    {
+        "question": "Explain breadth-first search (BFS).",
+        "category": "algorithm",
+        "companies": [
+            "Microsoft"
+        ],
+        "frequency": "High",
+        "difficulty": "medium",
+        "source": "Graph algorithms",
+        "keywords": [
+            "BFS",
+            "breadth-first search",
+            "graph traversal",
+            "queue"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    },
+    {
+        "question": "How do you detect a cycle in a graph?",
+        "category": "algorithm",
+        "companies": [
+            "Google"
+        ],
+        "frequency": "Medium",
+        "difficulty": "hard",
+        "source": "Graph interview questions",
+        "keywords": [
+            "cycle detection",
+            "graph",
+            "DFS",
+            "visited nodes",
+            "back edge"
+        ],
+        "ideal_min": 60,
+        "ideal_max": 90
+    },
+    {
+        "question": "What is a greedy algorithm?",
+        "category": "algorithm",
+        "companies": [
+            "Amazon"
+        ],
+        "frequency": "Medium",
+        "difficulty": "medium",
+        "source": "Algorithm design",
+        "keywords": [
+            "greedy algorithm",
+            "local optimum",
+            "algorithm design",
+            "strategy"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    },
+    {
+        "question": "Explain binary search tree operations.",
+        "category": "algorithm",
+        "companies": [
+            "Meta"
+        ],
+        "frequency": "High",
+        "difficulty": "medium",
+        "source": "Tree algorithms",
+        "keywords": [
+            "binary search tree",
+            "BST",
+            "insert",
+            "delete",
+            "traverse"
+        ],
+        "ideal_min": 50,
+        "ideal_max": 70
+    },
+    {
+        "question": "How would you reverse a string?",
+        "category": "algorithm",
+        "companies": [
+            "Amazon"
+        ],
+        "frequency": "High",
+        "difficulty": "easy",
+        "source": "Basic coding interviews",
+        "keywords": [
+            "reverse string",
+            "iteration",
+            "slicing",
+            "loop"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    },
+    {
+        "question": "How would you check if a string is a palindrome?",
+        "category": "algorithm",
+        "companies": [
+            "Google"
+        ],
+        "frequency": "High",
+        "difficulty": "easy",
+        "source": "Coding interviews",
+        "keywords": [
+            "palindrome",
+            "string",
+            "reverse",
+            "check"
+        ],
+        "ideal_min": 35,
+        "ideal_max": 50
+    }
+]
