@@ -1,3 +1,5 @@
+<!--THIS IS THE TEST FILE NOT A PROTOTYPE. -->
+
 {% extends "base.html" %}
 
 {% block content %}
@@ -10,6 +12,7 @@
 </nav>
 
 <div class="t-body">
+  <div class="t-followup-label hidden" id="followupLabel">FOLLOW UP QUESTION</div>
   <div class="t-question" id="question"></div>
   <div class="t-phase" id="phase">Get ready...</div>
   <div class="t-timer" id="timer">15</div>
@@ -25,6 +28,7 @@
 
 <script>
   const questions = {{ questions | tojson }};
+  const followUpTargets = {{ follow_up_targets | tojson }};
   let currentIndex = 0;
   let seconds = 0;
   let phase = 'prep';
@@ -32,6 +36,9 @@
   let recordingInterval = null;
   let mediaRecorder = null;
   let audioChunks = [];
+  let followUpMode = false;
+  let activeQuestionIndex = 0;
+  let followUpTiming = null;
 
   const questionEl = document.getElementById('question');
   const timerEl = document.getElementById('timer');
@@ -40,12 +47,17 @@
   const micLabel = document.getElementById('micLabel');
   const datetimeEl = document.getElementById('datetime');
   const qnumEl = document.getElementById('qnum');
+  const followUpLabel = document.getElementById('followupLabel');
 
   function loadQuestion() {
     if (currentIndex >= questions.length) {
       window.location.href = '/results';
       return;
     }
+
+    followUpMode = false;
+    followUpLabel.classList.add('hidden');
+    activeQuestionIndex = currentIndex;
 
     // reset UI
     seconds = 15;
@@ -81,16 +93,17 @@
       if (seconds <= 0) {
         clearInterval(prepInterval);
         timerEl.classList.remove('warning');
-        startRecording();
+        beginRecording(false);
       }
     }, 1000);
   }
 
-  function startRecording() {
+  function beginRecording(isFollowUp) {
+    followUpMode = isFollowUp;
     phase = 'recording';
     seconds = 0;
     timerEl.textContent = '00';
-    phaseEl.textContent = 'Recording';
+    phaseEl.textContent = isFollowUp ? 'Follow-up recording' : 'Recording';
     phaseEl.classList.add('recording-phase');
     micBtn.classList.add('active');
     micLabel.textContent = 'Press to stop';
@@ -115,9 +128,37 @@
       mediaRecorder = new MediaRecorder(stream);
       mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
       mediaRecorder.onstop = () => {
+        const onstopAt = performance.now();
+        const wasMainQuestion = !followUpMode;
+
+        if (followUpTiming && wasMainQuestion) {
+          followUpTiming.onstopAt = onstopAt;
+          console.log(`[TIMING] stopRecording() -> MediaRecorder.onstop: ${(onstopAt - followUpTiming.stopPressedAt).toFixed(2)}ms`);
+        }
+
+        const blobStartAt = performance.now();
         const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
-        sendAudio(audioBlob);
-        stream.getTracks().forEach(t => t.stop());
+        const blobElapsed = performance.now() - blobStartAt;
+
+        if (followUpTiming && wasMainQuestion) {
+          followUpTiming.blobCreatedAt = performance.now();
+          console.log(`[TIMING] MediaRecorder.onstop -> audio blob created: ${blobElapsed.toFixed(2)}ms`);
+        }
+
+        if (followUpMode) {
+          stream.getTracks().forEach(t => t.stop());
+          return;
+        }
+
+        sendAudio(audioBlob, activeQuestionIndex)
+          .then(() => maybeGenerateFollowUp(activeQuestionIndex))
+          .catch(err => {
+            console.error(err);
+            transitionToNextQuestion();
+          })
+          .finally(() => {
+            stream.getTracks().forEach(t => t.stop());
+          });
       };
       mediaRecorder.start();
     }).catch(() => {
@@ -127,35 +168,156 @@
 
   function stopRecording() {
     if (phase !== 'recording') return;
+    if (!followUpMode) {
+      followUpTiming = {
+        stopPressedAt: performance.now(),
+        onstopAt: null,
+        blobCreatedAt: null,
+        saveAudioStartAt: null,
+        saveAudioEndAt: null,
+        generateFollowUpCalledAt: null,
+        generateFollowUpStartAt: null,
+        generateFollowUpEndAt: null,
+        followUpShownAt: null,
+      };
+    }
     clearInterval(recordingInterval);
     phase = 'done';
     micBtn.classList.remove('active');
-    micLabel.textContent = 'Answer saved';
+    micLabel.textContent = followUpMode ? 'Follow-up saved' : 'Answer saved';
     micLabel.classList.remove('active');
-    phaseEl.textContent = 'Answer saved!';
+    phaseEl.textContent = followUpMode ? 'Follow-up saved!' : 'Answer saved!';
     phaseEl.classList.remove('recording-phase');
 
     if (mediaRecorder && mediaRecorder.state !== 'inactive') {
       mediaRecorder.stop();
     }
 
-    setTimeout(() => {
-      phaseEl.textContent = 'Next question loading...';
-      questionEl.style.transition = 'opacity 0.4s ease';
-      questionEl.style.opacity = '0';
+    if (followUpMode) {
       setTimeout(() => {
-        currentIndex++;
-        loadQuestion();
-      }, 500);
-    }, 1200);
+        transitionToNextQuestion();
+      }, 900);
+    }
   }
 
-  function sendAudio(blob) {
+  function sendAudio(blob, questionIndex) {
     const formData = new FormData();
-    formData.append('audio', blob, `q${currentIndex}.webm`);
-    formData.append('question_index', currentIndex);
-    formData.append('question', questions[currentIndex].question);
-    fetch('/save_audio', { method: 'POST', body: formData });
+    formData.append('audio', blob, `q${questionIndex}.webm`);
+    formData.append('question_index', questionIndex);
+    formData.append('question', questions[questionIndex].question);
+    const saveAudioStartAt = performance.now();
+    if (followUpTiming) {
+      followUpTiming.saveAudioStartAt = saveAudioStartAt;
+    }
+    return fetch('/save_audio', { method: 'POST', body: formData }).then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to save audio');
+      }
+      return response.json().then(data => {
+        const saveAudioEndAt = performance.now();
+        if (followUpTiming) {
+          followUpTiming.saveAudioEndAt = saveAudioEndAt;
+          console.log(`[TIMING] POST /save_audio: ${(saveAudioEndAt - saveAudioStartAt).toFixed(2)}ms`);
+        }
+        return data;
+      });
+    });
+  }
+
+  function maybeGenerateFollowUp(questionIndex) {
+    if (!followUpTargets.includes(questionIndex)) {
+      transitionToNextQuestion();
+      return Promise.resolve();
+    }
+
+    phaseEl.textContent = 'Generating follow-up...';
+    const generateFollowUpCalledAt = performance.now();
+    if (followUpTiming) {
+      followUpTiming.generateFollowUpCalledAt = generateFollowUpCalledAt;
+      if (followUpTiming.saveAudioEndAt !== null) {
+        console.log(`[TIMING] POST /save_audio complete -> /generate_followup called: ${(generateFollowUpCalledAt - followUpTiming.saveAudioEndAt).toFixed(2)}ms`);
+      }
+    }
+
+    const generateFollowUpStartAt = performance.now();
+    if (followUpTiming) {
+      followUpTiming.generateFollowUpStartAt = generateFollowUpStartAt;
+    }
+    return fetch('/generate_followup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        question: questions[questionIndex].question,
+        transcript: '',
+        question_index: questionIndex
+      })
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to generate follow-up');
+        }
+        return response.json().then(data => {
+          const generateFollowUpEndAt = performance.now();
+          if (followUpTiming) {
+            followUpTiming.generateFollowUpEndAt = generateFollowUpEndAt;
+            console.log(`[TIMING] POST /generate_followup: ${(generateFollowUpEndAt - generateFollowUpStartAt).toFixed(2)}ms`);
+          }
+          return data;
+        });
+      })
+      .then(data => {
+        showFollowUp(data.followup || 'Can you explain that in more detail?');
+      })
+      .catch(err => {
+        console.error(err);
+        transitionToNextQuestion();
+      });
+  }
+
+  function showFollowUp(text) {
+    followUpMode = true;
+    followUpLabel.classList.remove('hidden');
+    phaseEl.textContent = 'Follow-up question';
+    questionEl.style.transition = 'opacity 0.35s ease';
+    questionEl.style.opacity = '0';
+
+    setTimeout(() => {
+      questionEl.textContent = text;
+      questionEl.style.opacity = '1';
+      if (followUpTiming && followUpTiming.stopPressedAt !== null) {
+        followUpTiming.followUpShownAt = performance.now();
+        console.log(`[TIMING] stopRecording() -> follow-up question shown: ${(followUpTiming.followUpShownAt - followUpTiming.stopPressedAt).toFixed(2)}ms`);
+      }
+      phaseEl.textContent = 'Read the follow-up question';
+
+      let readSeconds = 8;
+      timerEl.textContent = String(readSeconds).padStart(2, '0');
+      timerEl.classList.remove('warning');
+
+      const readInterval = setInterval(() => {
+        readSeconds--;
+        timerEl.textContent = String(Math.max(readSeconds, 0)).padStart(2, '0');
+
+        if (readSeconds <= 5) {
+          timerEl.classList.add('warning');
+        }
+
+        if (readSeconds <= 0) {
+          clearInterval(readInterval);
+          beginRecording(true);
+        }
+      }, 1000);
+    }, 300);
+  }
+
+  function transitionToNextQuestion() {
+    phaseEl.textContent = 'Next question loading...';
+    questionEl.style.transition = 'opacity 0.4s ease';
+    questionEl.style.opacity = '0';
+    setTimeout(() => {
+      currentIndex++;
+      loadQuestion();
+    }, 500);
   }
 
   // start

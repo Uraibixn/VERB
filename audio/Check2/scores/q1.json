@@ -1,1 +1,1 @@
-{"t": 0, "r": 0, "p": 0, "k": 0, "transcript": "", "duration": 0, "r_count": 0, "p_count": 0, "k_found": 0}
+{"t": 31, "r": 100, "p": 85, "k": 20, "transcript": "Detecting a cycle in a graph involved transversing its nodes and looking for a condition where you can start at a specific point.", "duration": 9.2, "r_count": 0, "p_count": 1, "k_found": 1}

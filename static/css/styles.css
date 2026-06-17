@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap');
+/*Imports 2 google fonts*/
 
-* {
+
+Removes default browser margins/paddings. * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -25,6 +27,8 @@ body {
     background: #111;
     font-family: 'DM Sans', sans-serif;
 }
+
+/* centers the login/register card vertically and horizontally. */
 
 .verb-page {
     min-height: 100vh;
@@ -106,6 +110,8 @@ body {
     transition: color 0.2s, background 0.2s;
 }
 
+/* shows which tab is active (login vs register). */
+
 .verb-tab.active {
     color: #C8F135;
     background: #111;
@@ -120,6 +126,8 @@ body {
 .verb-panel {
     display: none;
 }
+
+/* making the current form visible */
 
 .verb-panel.active {
     display: block;
@@ -508,6 +516,18 @@ body {
 
 .t-phase.recording-phase {
     color: #ff6b6b;
+}
+
+.t-followup-label {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #C8F135;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.hidden {
+    display: none;
 }
 
 .t-timer {

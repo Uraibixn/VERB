@@ -23,7 +23,7 @@
 </div>
 
 <script>
-  const metrics = {{ metrics | tojson }};
+  const metrics = {{ metrics | tojson }}; // Converts Python objects (lists, dicts) into JSON strings so JS can use them directly.
   const overallTarget = {{ overall_score }};
   const R = 52;
   const C = +(2 * Math.PI * R).toFixed(2);
@@ -35,6 +35,10 @@
     const container = document.createElement('div');
     container.className = 'r-ring-wrap';
 
+    // stroke-dasharray : the total length of the ring.
+    // troke-dashoffset : moves the stroke along the path.
+    // offset = C : ring invisible
+    // offset = C - (score% / 100 * C) : ring filled proportionally.
     const ringContainer = document.createElement('div');
     ringContainer.className = 'ring-container';
     ringContainer.innerHTML = `
@@ -42,7 +46,7 @@
         <circle class="ring-bg" cx="65" cy="65" r="${R}" />
         <circle class="ring-fill" cx="65" cy="65" r="${R}"
           stroke="${m.color}"
-          stroke-dasharray="${C}"
+          stroke-dasharray="${C}" 
           stroke-dashoffset="${C}"
           id="ring${i}" />
       </svg>
